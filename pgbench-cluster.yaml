@@ -1,0 +1,10 @@
+apiVersion: stackgres.io/v1alpha1
+kind: StackGresCluster
+metadata:
+  name: pgbench-cluster
+  namespace: database
+spec:
+  instances: 2
+  pgVersion: '12.1'
+  backupConfig: 'backupconf'
+  volumeSize: '10Gi'
