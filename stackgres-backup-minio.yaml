@@ -1,0 +1,22 @@
+apiVersion: stackgres.io/v1alpha1
+kind: StackGresBackupConfig
+metadata:
+  name: backupconf
+  namespace: database
+spec:
+  fullSchedule: "0 5 * * *"
+  storage:
+    type: s3
+    s3:
+      prefix: s3://stackgres
+      endpoint: http://stackgres-cluster-minio.database.svc.cluster.local:9000
+      forcePathStyle: true
+      region: k8s
+      credentials:
+        accessKey:
+          name: stackgres-cluster-minio
+          key: accesskey
+        secretKey:
+          name: stackgres-cluster-minio
+          key: secretkey
+
